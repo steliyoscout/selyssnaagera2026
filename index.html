@@ -60,10 +60,13 @@
     .topbar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 0}
     .brand{display:flex;align-items:center;gap:12px;font-weight:850;letter-spacing:-.02em}
     .mark{
-      width:42px;height:42px;border-radius:14px;display:grid;place-items:center;
-      background:linear-gradient(135deg,var(--purple),var(--pink));
-      color:#fff;font-weight:950;
-      box-shadow:0 0 26px rgba(140,82,255,.32),0 0 44px rgba(255,79,179,.18)
+      width:48px;height:48px;border-radius:14px;display:grid;place-items:center;overflow:hidden;
+      background:rgba(255,255,255,.92);
+      border:1px solid rgba(255,255,255,.22);
+      box-shadow:0 0 26px rgba(140,82,255,.26),0 0 42px rgba(255,79,179,.14)
+    }
+    .mark img{
+      display:block;width:100%;height:100%;object-fit:contain;padding:4px
     }
     .brand small{display:block;margin-top:2px;color:var(--muted);font-size:11px;font-weight:650;letter-spacing:.08em;text-transform:uppercase}
     .pill{
@@ -75,23 +78,33 @@
     .hero{
       position:relative;overflow:hidden;min-height:590px;display:flex;align-items:flex-end;
       padding:clamp(34px,7vw,76px);border:1px solid var(--line);border-radius:38px;
-      background:
-        radial-gradient(circle at 80% 18%,rgba(140,82,255,.46),transparent 28%),
-        radial-gradient(circle at 72% 72%,rgba(255,79,179,.26),transparent 32%),
-        radial-gradient(circle at 22% 88%,rgba(255,209,138,.13),transparent 30%),
-        linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.025));
+      background-image:url("./Image.png");
+      background-size:cover;
+      background-position:center center;
+      background-repeat:no-repeat;
       box-shadow:var(--shadow),0 0 80px rgba(140,82,255,.10);
       isolation:isolate
     }
     .hero::before{
-      content:"";position:absolute;width:520px;height:520px;border-radius:50%;right:-150px;top:-180px;
-      border:72px solid rgba(255,255,255,.035);box-shadow:0 0 90px rgba(140,82,255,.14);z-index:-1
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:0;
+      background:
+        linear-gradient(90deg,rgba(8,5,15,.86) 0%,rgba(8,5,15,.68) 35%,rgba(8,5,15,.28) 63%,rgba(8,5,15,.10) 100%),
+        linear-gradient(0deg,rgba(8,5,15,.72) 0%,rgba(8,5,15,.12) 58%,rgba(8,5,15,.08) 100%),
+        radial-gradient(circle at 18% 88%,rgba(255,79,179,.22),transparent 34%),
+        radial-gradient(circle at 88% 14%,rgba(140,82,255,.16),transparent 36%)
     }
     .hero::after{
-      content:"";position:absolute;left:-80px;bottom:-120px;width:430px;height:260px;
-      background:radial-gradient(ellipse,rgba(255,79,179,.18),transparent 68%);filter:blur(10px);z-index:-1
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:1;
+      pointer-events:none;
+      box-shadow:inset 0 -100px 130px rgba(8,5,15,.34),inset 0 0 65px rgba(8,5,15,.14)
     }
-    .hero-grid{width:100%;display:grid;grid-template-columns:minmax(0,1fr) 265px;gap:44px;align-items:end}
+    .hero-grid{position:relative;z-index:2;width:100%;display:grid;grid-template-columns:minmax(0,1fr) 265px;gap:44px;align-items:end}
     .eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--pink-light);font-weight:850;text-transform:uppercase;font-size:12px;letter-spacing:.16em}
     .eyebrow::before{content:"";width:30px;height:2px;background:linear-gradient(90deg,var(--purple-light),var(--pink));box-shadow:0 0 12px rgba(255,79,179,.45)}
     h1{
@@ -259,7 +272,7 @@
   <div class="shell">
     <header class="topbar">
       <div class="brand">
-        <div class="mark">SE</div>
+        <div class="mark"><img src="./steliyoscout-logo.png" alt="S:t Eliyo Scoutkår"></div>
         <div>S:t Eliyo Scoutkår<small>Västerås</small></div>
       </div>
       <a class="pill" href="#anmalan">Anmäl dig ↓</a>
