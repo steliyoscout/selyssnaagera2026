@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0d0818">
+  <meta name="description" content="Anmälan till Se, Lyssna, agera. 2026 med S:t Eliyo Scoutkår.">
+  <title>Se, Lyssna, agera. 2026 | S:t Eliyo Scoutkår</title>
+
+  <style>
+    :root{
+      --bg:#090611;
+      --bg2:#161023;
+      --purple:#8c52ff;
+      --purple-light:#c7a5ff;
+      --pink:#ff4fb3;
+      --pink-light:#ffafe0;
+      --warm:#ffd18a;
+      --text:#fff;
+      --muted:rgba(255,255,255,.66);
+      --line:rgba(255,255,255,.13);
+      --glass:rgba(255,255,255,.065);
+      --shadow:0 30px 90px rgba(0,0,0,.38);
+      --radius:28px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+    body{
+      margin:0;
+      min-height:100vh;
+      overflow-x:hidden;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 10% 7%,rgba(140,82,255,.30),transparent 28rem),
+        radial-gradient(circle at 90% 12%,rgba(255,79,179,.22),transparent 30rem),
+        radial-gradient(circle at 52% 100%,rgba(255,209,138,.10),transparent 34rem),
+        linear-gradient(145deg,#08050f 0%,#120b20 48%,#1b102b 100%);
+      background-attachment:fixed;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.28;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+      background-size:54px 54px;
+      mask-image:linear-gradient(to bottom,black,transparent 80%);
+    }
+
+    a{color:inherit}
+    button,input,select,textarea{font:inherit}
+    .shell{width:min(1140px,calc(100% - 32px));margin:0 auto;position:relative;z-index:1}
+
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 0}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:850;letter-spacing:-.02em}
+    .mark{
+      width:42px;height:42px;border-radius:14px;display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--purple),var(--pink));
+      color:#fff;font-weight:950;
+      box-shadow:0 0 26px rgba(140,82,255,.32),0 0 44px rgba(255,79,179,.18)
+    }
+    .brand small{display:block;margin-top:2px;color:var(--muted);font-size:11px;font-weight:650;letter-spacing:.08em;text-transform:uppercase}
+    .pill{
+      text-decoration:none;border:1px solid var(--line);background:rgba(255,255,255,.055);
+      backdrop-filter:blur(16px);border-radius:999px;padding:11px 17px;font-size:13px;font-weight:800;transition:.18s ease
+    }
+    .pill:hover{transform:translateY(-2px);background:rgba(255,255,255,.09)}
+
+    .hero{
+      position:relative;overflow:hidden;min-height:590px;display:flex;align-items:flex-end;
+      padding:clamp(34px,7vw,76px);border:1px solid var(--line);border-radius:38px;
+      background:
+        radial-gradient(circle at 80% 18%,rgba(140,82,255,.46),transparent 28%),
+        radial-gradient(circle at 72% 72%,rgba(255,79,179,.26),transparent 32%),
+        radial-gradient(circle at 22% 88%,rgba(255,209,138,.13),transparent 30%),
+        linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.025));
+      box-shadow:var(--shadow),0 0 80px rgba(140,82,255,.10);
+      isolation:isolate
+    }
+    .hero::before{
+      content:"";position:absolute;width:520px;height:520px;border-radius:50%;right:-150px;top:-180px;
+      border:72px solid rgba(255,255,255,.035);box-shadow:0 0 90px rgba(140,82,255,.14);z-index:-1
+    }
+    .hero::after{
+      content:"";position:absolute;left:-80px;bottom:-120px;width:430px;height:260px;
+      background:radial-gradient(ellipse,rgba(255,79,179,.18),transparent 68%);filter:blur(10px);z-index:-1
+    }
+    .hero-grid{width:100%;display:grid;grid-template-columns:minmax(0,1fr) 265px;gap:44px;align-items:end}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--pink-light);font-weight:850;text-transform:uppercase;font-size:12px;letter-spacing:.16em}
+    .eyebrow::before{content:"";width:30px;height:2px;background:linear-gradient(90deg,var(--purple-light),var(--pink));box-shadow:0 0 12px rgba(255,79,179,.45)}
+    h1{
+      max-width:860px;margin:22px 0 24px;font-size:clamp(52px,8.5vw,108px);line-height:.88;letter-spacing:-.072em;
+      background:linear-gradient(90deg,#fff 0%,#e8d8ff 36%,#ffb7df 74%,#fff 100%);
+      -webkit-background-clip:text;background-clip:text;color:transparent
+    }
+    .lead{max-width:730px;margin:0 0 30px;color:rgba(255,255,255,.83);font-size:clamp(17px,2.3vw,21px);line-height:1.6}
+    .actions{display:flex;flex-wrap:wrap;gap:12px}
+    .btn{
+      appearance:none;border:0;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      min-height:54px;padding:0 23px;border-radius:999px;font-weight:850;font-size:15px;transition:.18s ease
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:linear-gradient(135deg,var(--purple),var(--pink));color:#fff;box-shadow:0 0 30px rgba(140,82,255,.30),0 0 42px rgba(255,79,179,.20)}
+    .btn-secondary{background:rgba(255,255,255,.06);color:#fff;border:1px solid var(--line);backdrop-filter:blur(14px)}
+    .hero-badge{
+      align-self:end;justify-self:end;width:235px;aspect-ratio:1;border-radius:50%;border:1px solid rgba(255,255,255,.16);
+      background:rgba(255,255,255,.055);backdrop-filter:blur(20px);display:grid;place-items:center;text-align:center;
+      transform:rotate(6deg);box-shadow:inset 0 0 70px rgba(140,82,255,.11),0 0 40px rgba(255,79,179,.10)
+    }
+    .hero-badge strong{display:block;font-size:54px;line-height:1;letter-spacing:-.06em;color:var(--pink-light);text-shadow:0 0 24px rgba(255,79,179,.42)}
+    .hero-badge span{display:block;margin-top:8px;color:var(--muted);font-size:12px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}
+
+    .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:22px 0 78px}
+    .fact,.slot,.form-card{
+      border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(20px);
+      box-shadow:inset 0 0 24px rgba(255,255,255,.025)
+    }
+    .fact{min-height:154px;padding:22px;border-radius:22px}
+    .fact .icon{font-size:25px;margin-bottom:26px}
+    .label{margin-bottom:7px;color:var(--purple-light);font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+    .fact strong{display:block;font-size:18px;line-height:1.35}
+    .fact span{display:block;margin-top:4px;color:var(--muted);font-size:14px;line-height:1.45}
+
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:22px}
+    .section-head h2{margin:0;font-size:clamp(36px,6vw,64px);line-height:.98;letter-spacing:-.055em}
+    .section-head p{max-width:470px;margin:0;color:var(--muted);line-height:1.65}
+    .schedule{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:82px}
+    .slot{position:relative;overflow:hidden;padding:32px;border-radius:var(--radius)}
+    .slot::after{content:"";position:absolute;right:-42px;top:-50px;width:150px;height:150px;border:28px solid rgba(199,165,255,.06);border-radius:50%}
+    .slot .time{margin:8px 0 18px;font-size:clamp(36px,5.6vw,58px);font-weight:950;letter-spacing:-.055em;background:linear-gradient(90deg,var(--purple-light),var(--pink-light));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .slot h3{margin:0 0 8px;font-size:23px}
+    .slot p{margin:0;color:var(--muted);line-height:1.55}
+
+    .form-wrap{margin:0 0 82px}
+    .form-card{overflow:hidden;border-radius:32px;box-shadow:var(--shadow),0 0 70px rgba(140,82,255,.09)}
+    .form-intro{
+      display:flex;align-items:end;justify-content:space-between;gap:30px;padding:34px;
+      background:radial-gradient(circle at 88% 15%,rgba(140,82,255,.23),transparent 28%),radial-gradient(circle at 8% 100%,rgba(255,79,179,.14),transparent 32%),rgba(255,255,255,.035);
+      border-bottom:1px solid var(--line)
+    }
+    .form-intro h2{margin:0 0 9px;font-size:clamp(32px,5vw,52px);letter-spacing:-.045em}
+    .form-intro p{max-width:650px;margin:0;color:var(--muted);line-height:1.58}
+    .price-chip{flex:0 0 auto;padding:14px 17px;border-radius:17px;background:linear-gradient(135deg,var(--purple),var(--pink));color:#fff;text-align:right;box-shadow:0 0 26px rgba(140,82,255,.24)}
+    .price-chip small{display:block;font-size:10px;font-weight:850;letter-spacing:.1em;text-transform:uppercase;opacity:.78}
+    .price-chip strong{display:block;margin-top:2px;font-size:27px;letter-spacing:-.04em}
+
+    .registration-form{padding:34px;color:#fff}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .field{min-width:0}.field.full{grid-column:1/-1}
+    .field label{display:block;margin-bottom:9px;color:rgba(255,255,255,.92);font-size:13px;font-weight:850;line-height:1.45}
+    .helper{display:block;margin-top:-3px;margin-bottom:10px;color:var(--muted);font-size:12px;line-height:1.5}
+    .required{color:var(--pink-light)}
+    input,select,textarea{
+      width:100%;min-width:0;border:1.5px solid rgba(199,165,255,.40);border-radius:15px;
+      background:rgba(255,255,255,.075);color:#fff;padding:14px 15px;outline:none;font-size:16px;
+      box-shadow:inset 0 0 15px rgba(255,255,255,.02),0 0 15px rgba(140,82,255,.05);transition:.18s ease
+    }
+    input:focus,select:focus,textarea:focus{border-color:var(--pink-light);box-shadow:0 0 0 4px rgba(255,79,179,.11),0 0 24px rgba(140,82,255,.17)}
+    textarea{min-height:120px;resize:vertical}
+    input::placeholder,textarea::placeholder{color:rgba(255,255,255,.35)}
+    select option{background:#160d25;color:#fff}
+
+    .consent-box{
+      grid-column:1/-1;padding:20px;border:1px solid rgba(255,175,224,.24);border-radius:18px;
+      background:linear-gradient(135deg,rgba(140,82,255,.10),rgba(255,79,179,.08))
+    }
+    .consent-text{margin:0 0 16px;color:rgba(255,255,255,.82);font-size:14px;line-height:1.65}
+    .consent-option{display:flex;align-items:flex-start;gap:11px;cursor:pointer;font-size:14px;font-weight:850}
+    .consent-option input{width:20px;height:20px;min-width:20px;margin:0;margin-top:1px;accent-color:#a76dff;box-shadow:none}
+
+    .form-divider{height:1px;margin:30px 0;background:var(--line)}
+    .payment-summary{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;padding:21px;border:1px solid rgba(199,165,255,.20);border-radius:20px;background:linear-gradient(135deg,rgba(140,82,255,.09),rgba(255,79,179,.10))}
+    .payment-summary h3{margin:0 0 5px;font-size:18px}.payment-summary p{margin:0;color:var(--muted);font-size:14px;line-height:1.55}
+    .payment-summary strong{font-size:32px;color:var(--pink-light);text-shadow:0 0 18px rgba(255,79,179,.30)}
+    .submit-row{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:24px}
+    .submit-note{max-width:620px;color:var(--muted);font-size:13px;line-height:1.55}
+    .submit-btn{
+      flex:0 0 auto;border:0;border-radius:999px;padding:16px 25px;cursor:pointer;
+      background:linear-gradient(135deg,var(--purple),var(--pink));color:#fff;font-weight:900;
+      box-shadow:0 0 30px rgba(140,82,255,.28),0 0 44px rgba(255,79,179,.17);transition:.18s ease
+    }
+    .submit-btn:hover{transform:translateY(-2px)}
+    .submit-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+    .form-message{display:none;margin-top:18px;padding:15px 17px;border:1px solid rgba(255,175,224,.24);border-radius:16px;background:rgba(255,79,179,.09);color:rgba(255,255,255,.88);font-size:13.5px;line-height:1.55}
+
+    .success-box{display:none;padding:34px}
+    .success-card{
+      position:relative;overflow:hidden;padding:32px;border:1px solid rgba(199,165,255,.28);border-radius:28px;
+      background:radial-gradient(circle at 100% 0%,rgba(140,82,255,.28),transparent 35%),radial-gradient(circle at 0% 100%,rgba(255,79,179,.17),transparent 36%),linear-gradient(135deg,rgba(140,82,255,.10),rgba(255,79,179,.12));
+      box-shadow:0 0 42px rgba(140,82,255,.13),inset 0 0 30px rgba(255,255,255,.025)
+    }
+    .success-kicker{color:var(--purple-light);font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+    .success-title{margin:8px 0 10px;font-size:clamp(34px,5vw,54px);line-height:1;letter-spacing:-.05em}
+    .success-subtitle{max-width:760px;margin:0 0 24px;color:rgba(255,255,255,.78);font-size:17px;line-height:1.6}
+
+    .payment-alert{display:flex;align-items:flex-start;gap:15px;margin:0 0 20px;padding:18px 20px;border:1px solid rgba(255,175,224,.28);border-radius:20px;background:linear-gradient(135deg,rgba(140,82,255,.18),rgba(255,79,179,.18));box-shadow:0 0 28px rgba(140,82,255,.10)}
+    .payment-alert-icon{flex:0 0 auto;width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:rgba(255,255,255,.10);font-size:21px}
+    .payment-alert strong{display:block;margin-bottom:4px;font-size:20px}
+    .payment-alert span{display:block;color:rgba(255,255,255,.76);font-size:14px;line-height:1.5}
+
+    .swish-link{
+      display:flex;width:100%;min-height:92px;align-items:center;justify-content:center;flex-direction:column;gap:4px;
+      margin:0 0 22px;padding:18px 24px;border-radius:24px;text-decoration:none;text-align:center;
+      background:radial-gradient(circle at 18% 15%,rgba(255,255,255,.24),transparent 30%),linear-gradient(135deg,#8c52ff 0%,#c346e8 48%,#ff4fb3 100%);
+      color:#fff;font-size:clamp(24px,4vw,34px);font-weight:950;letter-spacing:-.025em;
+      box-shadow:0 0 34px rgba(140,82,255,.50),0 0 68px rgba(255,79,179,.32);
+      animation:swishPulse 1.7s ease-in-out infinite;transition:.18s ease
+    }
+    .swish-link:hover{transform:translateY(-2px) scale(1.01)}
+    .swish-link small{font-size:12px;font-weight:750;letter-spacing:.04em;opacity:.88}
+    @keyframes swishPulse{
+      0%,100%{box-shadow:0 0 34px rgba(140,82,255,.46),0 0 64px rgba(255,79,179,.28)}
+      50%{box-shadow:0 0 48px rgba(140,82,255,.76),0 0 88px rgba(255,79,179,.48)}
+    }
+
+    .payment-details{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 22px}
+    .payment-detail{padding:17px;border:1px solid rgba(255,255,255,.12);border-radius:18px;background:rgba(255,255,255,.055);min-width:0}
+    .payment-detail-label{margin-bottom:6px;color:var(--purple-light);font-size:10px;font-weight:900;letter-spacing:.11em;text-transform:uppercase}
+    .payment-detail-value{font-size:20px;font-weight:850;line-height:1.35;overflow-wrap:anywhere}
+    .payment-detail.amount .payment-detail-value{font-size:32px;color:#fff}
+    .registration-details{margin-top:26px;padding-top:24px;border-top:1px solid var(--line)}
+    .registration-details-title{margin:0 0 14px;color:var(--muted);font-size:12px;font-weight:850;letter-spacing:.11em;text-transform:uppercase}
+    .registration-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .registration-item{padding:14px 15px;border-radius:15px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09);font-size:14px;line-height:1.45;overflow-wrap:anywhere}
+    .registration-item strong{display:block;margin-bottom:4px;color:#fff;font-size:12px}
+    .manual-note{margin:18px 0 0;color:var(--muted);font-size:13px;line-height:1.55}
+
+    .hidden-frame{position:absolute;width:1px;height:1px;border:0;opacity:0;pointer-events:none}
+    footer{border-top:1px solid var(--line);padding:29px 0 46px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+    @media(max-width:900px){
+      .hero-grid{grid-template-columns:1fr}.hero-badge{display:none}.facts{grid-template-columns:1fr 1fr}.hero{min-height:520px}.form-intro{align-items:flex-start}
+      .payment-details,.registration-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:680px){
+      .shell{width:min(100% - 20px,1140px)}
+      .topbar{padding:17px 0}.pill{display:none}
+      .hero{min-height:500px;padding:38px 25px;border-radius:28px}
+      .facts{grid-template-columns:1fr}.fact{min-height:auto}.fact .icon{margin-bottom:18px}
+      .section-head{display:block}.section-head p{margin-top:14px}
+      .schedule{grid-template-columns:1fr}
+      .form-intro{display:block;padding:25px 20px}.price-chip{display:inline-block;margin-top:20px;text-align:left}
+      .registration-form,.success-box{padding:24px 20px}.form-grid{grid-template-columns:1fr}.field.full,.consent-box{grid-column:auto}
+      .payment-summary{grid-template-columns:1fr}.submit-row{display:block}.submit-btn{width:100%;margin-top:18px}
+      .success-card{padding:22px 18px}.success-title{font-size:34px}.success-subtitle{font-size:15px}
+      .payment-alert{padding:15px}.payment-alert strong{font-size:17px}
+      .swish-link{min-height:100px;font-size:27px;border-radius:21px}
+      .payment-details,.registration-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="mark">SE</div>
+        <div>S:t Eliyo Scoutkår<small>Västerås</small></div>
+      </div>
+      <a class="pill" href="#anmalan">Anmäl dig ↓</a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow">24–25 oktober 2026</div>
+            <h1>SE,<br>LYSSNA,<br>AGERA.</h1>
+            <p class="lead">En övernattningsaktivitet för Spårare och Upptäckare med gemenskap, upplevelser och scouting tillsammans.</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="#anmalan">Anmäl ditt barn</a>
+              <a class="btn btn-secondary" href="#tider">Se tider</a>
+            </div>
+          </div>
+          <div class="hero-badge"><div><strong>300</strong><span>kr / deltagare</span></div></div>
+        </div>
+      </section>
+
+      <section class="facts" aria-label="Aktivitetsinformation">
+        <article class="fact"><div class="icon">📍</div><div class="label">Plats</div><strong>Färna</strong><span>Färna 3, 730 30 Kolsva, Köping</span></article>
+        <article class="fact"><div class="icon">📅</div><div class="label">Datum</div><strong>24–25 oktober 2026</strong><span>Lördag till söndag</span></article>
+        <article class="fact"><div class="icon">💳</div><div class="label">Avgift</div><strong>300 kr / deltagare</strong><span>Betalning via Swish</span></article>
+        <article class="fact"><div class="icon">⚜️</div><div class="label">För vem?</div><strong>Spårare & Upptäckare</strong><span>Övernattningsaktivitet</span></article>
+      </section>
+
+      <section id="tider">
+        <div class="section-head">
+          <h2>Från lördag<br>till söndag.</h2>
+          <p>Aktiviteten börjar på lördagsmorgonen och avslutas efter lunch på söndagen. Mer praktisk information kan skickas till anmälda deltagare inför aktiviteten.</p>
+        </div>
+        <div class="schedule">
+          <article class="slot"><div class="label">Start</div><div class="time">08:30</div><h3>Lördag 24 oktober</h3><p>Samling och start för helgens aktivitet.</p></article>
+          <article class="slot"><div class="label">Avslut</div><div class="time">13:00</div><h3>Söndag 25 oktober</h3><p>Aktiviteten avslutas kl. 13:00.</p></article>
+        </div>
+      </section>
+
+      <section id="anmalan" class="form-wrap">
+        <div class="form-card">
+          <div class="form-intro">
+            <div>
+              <div class="eyebrow">Anmälan</div>
+              <h2>Anmäl deltagaren.</h2>
+              <p>Fyll i uppgifterna nedan. Eftersom aktiviteten riktar sig till Spårare och Upptäckare behöver vi även kontaktuppgifter till vårdnadshavare.</p>
+            </div>
+            <div class="price-chip"><small>Att betala</small><strong>300 kr</strong></div>
+          </div>
+
+          <form id="registrationForm" class="registration-form">
+            <div class="form-grid">
+              <div class="field"><label for="fullName">Deltagarens namn och efternamn <span class="required">*</span></label><input id="fullName" name="fullName" type="text" required placeholder="Förnamn Efternamn"></div>
+              <div class="field"><label for="section">Avdelning <span class="required">*</span></label><select id="section" name="section" required><option value="">Välj avdelning</option><option value="Spårare">Spårare</option><option value="Upptäckare">Upptäckare</option></select></div>
+
+              <div class="field"><label for="guardianName">Vårdnadshavares namn <span class="required">*</span></label><input id="guardianName" name="guardianName" type="text" required placeholder="Förnamn Efternamn"></div>
+              <div class="field"><label for="guardianPhone">Vårdnadshavares mobilnummer <span class="required">*</span></label><input id="guardianPhone" name="guardianPhone" type="tel" required placeholder="07X XXX XX XX"></div>
+
+              <div class="field full"><label for="email">E-post till vårdnadshavare <span class="required">*</span></label><input id="email" name="email" type="email" required placeholder="namn@email.com"></div>
+
+              <div class="field full">
+                <label for="healthInfo">Har du några allergier, sjukdomar eller tar du någon medicin som vi behöver känna till? <span class="required">*</span></label>
+                <span class="helper">Om ja, vänligen specificera. Om inget finns, skriv Nej.</span>
+                <textarea id="healthInfo" name="healthInfo" required placeholder="Beskriv det vi behöver känna till, eller skriv Nej."></textarea>
+              </div>
+
+              <div class="field full">
+                <label for="foodInfo">Finns det någon mat du inte äter eller är allergisk mot? <span class="required">*</span></label>
+                <span class="helper">Om ja, vänligen specificera. Om inget finns, skriv Nej.</span>
+                <textarea id="foodInfo" name="foodInfo" required placeholder="Beskriv specialkost/allergi, eller skriv Nej."></textarea>
+              </div>
+
+              <div class="consent-box">
+                <p class="consent-text"><strong>Foto och film:</strong> Genom att anmäla mig till detta arrangemang godkänner jag att jag, eller mitt barn (om deltagaren är under 18 år), får fotograferas och filmas under aktiviteten. Bild- och videomaterialet kan komma att användas i S:t Eliyo Scoutkårs kommunikationskanaler, såsom sociala medier.</p>
+                <label class="consent-option" for="photoConsent">
+                  <input id="photoConsent" name="photoConsent" type="checkbox" value="Ja" required>
+                  <span>JA, jag godkänner <span class="required">*</span></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-divider"></div>
+            <div class="payment-summary">
+              <div><h3>Se, Lyssna, agera. 2026</h3><p>När anmälan är registrerad visas Swish-betalningen direkt och en bekräftelse skickas via e-post.</p></div>
+              <strong>300 kr</strong>
+            </div>
+
+            <div class="submit-row">
+              <div class="submit-note">Genom att skicka anmälan bekräftar vårdnadshavaren att uppgifterna ovan är korrekta. Betalningen genomförs separat via Swish efter registreringen.</div>
+              <button type="button" class="submit-btn primary-btn" onclick="submitRegistration()">Skicka anmälan</button>
+            </div>
+            <div id="formMessage" class="form-message"></div>
+          </form>
+
+          <div id="successBox" class="success-box">
+            <div class="success-card">
+              <div class="success-kicker">Anmälan registrerad</div>
+              <div class="success-title">Ett steg kvar ⚜️</div>
+              <p class="success-subtitle">Anmälan är sparad. <strong>Slutför nu betalningen med Swish.</strong></p>
+
+              <div class="payment-alert">
+                <div class="payment-alert-icon">💳</div>
+                <div>
+                  <strong>Betala 300 kr med Swish nu</strong>
+                  <span>Tryck på knappen nedan. Swish öppnas med belopp och meddelande färdigt.</span>
+                </div>
+              </div>
+
+              <a id="swishButton" class="swish-link" href="#" target="_top">
+                BETALA MED SWISH
+                <small>Tryck här för att öppna Swish</small>
+              </a>
+
+              <div class="payment-details">
+                <div class="payment-detail amount"><div class="payment-detail-label">Belopp</div><div id="successAmount" class="payment-detail-value">300 kr</div></div>
+                <div class="payment-detail"><div class="payment-detail-label">Swishnummer</div><div id="successSwishNumber" class="payment-detail-value"></div></div>
+                <div class="payment-detail"><div class="payment-detail-label">Meddelande</div><div id="successMessageText" class="payment-detail-value"></div></div>
+              </div>
+
+              <div class="registration-details">
+                <div class="registration-details-title">Din anmälan</div>
+                <div class="registration-grid">
+                  <div class="registration-item"><strong>Registrerings-ID</strong><span id="successRegistrationId"></span></div>
+                  <div class="registration-item"><strong>Deltagare</strong><span id="successName"></span></div>
+                  <div class="registration-item"><strong>Avdelning</strong><span id="successSection"></span></div>
+                </div>
+                <p class="manual-note">Om Swish inte öppnas kan du betala manuellt med Swishnumret, beloppet och meddelandet ovan.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer><span>© 2026 S:t Eliyo Scoutkår</span><span>Se, Lyssna, agera. · 24–25 oktober 2026</span></footer>
+  </div>
+
+  <iframe id="submitFrame" name="submitFrame" class="hidden-frame"></iframe>
+
+  <script>
+    const APP_SCRIPT_URL="PASTE_YOUR_APPS_SCRIPT_EXEC_URL_HERE";
+    let pendingRequestId=null;
+    let submitTimeout=null;
+
+    function validateForm(){
+      const form=document.getElementById("registrationForm");
+      if(!form.checkValidity()){form.reportValidity();return false}
+      return true;
+    }
+
+    function buildSwishUrl(r){
+      return "https://app.swish.nu/1/p/sw/?sw="+encodeURIComponent(r.swishNumber)+
+        "&amt="+encodeURIComponent(r.amount)+
+        "&cur=SEK&msg="+encodeURIComponent(r.message)+
+        "&edit=msg&src=qr";
+    }
+
+    function showMessage(message){
+      const box=document.getElementById("formMessage");
+      box.style.display="block";
+      box.textContent=message;
+    }
+
+    function hideMessage(){
+      const box=document.getElementById("formMessage");
+      box.style.display="none";
+      box.textContent="";
+    }
+
+    function resetButton(){
+      const button=document.querySelector(".primary-btn");
+      button.disabled=false;
+      button.textContent="Skicka anmälan";
+    }
+
+    function showSuccess(r){
+      document.getElementById("swishButton").href=buildSwishUrl(r);
+      document.getElementById("registrationForm").style.display="none";
+      document.getElementById("successBox").style.display="block";
+      document.getElementById("successAmount").textContent=(r.amount||300)+" kr";
+      document.getElementById("successSwishNumber").textContent=r.swishNumber||"";
+      document.getElementById("successMessageText").textContent=r.message||"";
+      document.getElementById("successRegistrationId").textContent=r.registrationId||"";
+      document.getElementById("successName").textContent=r.fullName||"";
+      document.getElementById("successSection").textContent=r.section||"";
+      document.getElementById("successBox").scrollIntoView({behavior:"smooth",block:"start"});
+    }
+
+    window.addEventListener("message",function(event){
+      const data=event.data;
+      if(!data||data.type!=="sla-registration-result"||!data.payload)return;
+
+      const response=data.payload;
+      if(pendingRequestId&&response.requestId!==pendingRequestId)return;
+      if(submitTimeout)clearTimeout(submitTimeout);
+      pendingRequestId=null;
+
+      if(response.success){
+        showSuccess(response);
+      }else{
+        showMessage("Något gick fel: "+(response.message||"Okänt fel"));
+        resetButton();
+      }
+    });
+
+    function submitRegistration(){
+      if(!validateForm())return;
+
+      if(APP_SCRIPT_URL.includes("PASTE_YOUR")){
+        showMessage("Anmälan är inte aktiverad ännu. Apps Script-länken behöver kopplas in först.");
+        return;
+      }
+
+      hideMessage();
+      const button=document.querySelector(".primary-btn");
+      button.disabled=true;
+      button.textContent="Skickar...";
+      pendingRequestId="SLA-"+Date.now()+"-"+Math.floor(Math.random()*100000);
+
+      const source=document.getElementById("registrationForm");
+      const postForm=document.createElement("form");
+      postForm.method="POST";
+      postForm.action=APP_SCRIPT_URL;
+      postForm.target="submitFrame";
+      postForm.style.display="none";
+
+      const data=new FormData(source);
+      data.set("requestId",pendingRequestId);
+
+      for(const [name,value] of data.entries()){
+        const input=document.createElement("input");
+        input.type="hidden";
+        input.name=name;
+        input.value=value;
+        postForm.appendChild(input);
+      }
+
+      document.body.appendChild(postForm);
+      postForm.submit();
+      postForm.remove();
+
+      submitTimeout=setTimeout(function(){
+        if(pendingRequestId){
+          pendingRequestId=null;
+          showMessage("Anmälan tog för lång tid. Kontrollera internetanslutningen och försök igen.");
+          resetButton();
+        }
+      },20000);
+    }
+  </script>
+</body>
+</html>
