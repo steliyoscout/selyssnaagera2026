@@ -9,7 +9,7 @@ const SWISH_NUMBER = "1231841493";
 const ACTIVITY_AMOUNT = 300;
 
 const ACTIVITY_DATE = "24–25 oktober 2026";
-const ACTIVITY_TIME = "24 oktober 08:30 – 25 oktober 13:00";
+const ACTIVITY_TIME = "24 oktober 08:00 – 25 oktober 13:00";
 const ACTIVITY_LOCATION = "Färna";
 const ACTIVITY_ADDRESS = "Färna 3, 730 30 Kolsva, Köping";
 
